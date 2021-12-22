@@ -54,7 +54,7 @@
  
    return (
      <SafeAreaView style={backgroundStyle}>
-       <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
+       <StatusBar barStyle={isDarkMode ? 'dark-content' : 'light-content'} />
        <ScrollView
          contentInsetAdjustmentBehavior="automatic"
          style={backgroundStyle}>
