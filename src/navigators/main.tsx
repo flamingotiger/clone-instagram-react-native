@@ -1,25 +1,22 @@
 import React from 'react';
 import HomeScreen from '../screens/Home';
 import DummyScreen from '../screens/Dummy';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import {ROUTE_NAMES} from '../utils/constants/route.constants';
-
-const Stack = createNativeStackNavigator();
+import {RootStack} from '.';
 
 const Main = () => {
   return (
-    <Stack.Navigator initialRouteName={ROUTE_NAMES.HOME}>
-      <Stack.Screen
+    <RootStack.Navigator initialRouteName="Home">
+      <RootStack.Screen
         name="Home"
         component={HomeScreen}
         options={{title: 'Home'}}
       />
-      <Stack.Screen
+      <RootStack.Screen
         name="Dummy"
         component={DummyScreen}
-        options={{title: 'Home'}}
+        options={{title: 'Dummy'}}
       />
-    </Stack.Navigator>
+    </RootStack.Navigator>
   );
 };
 
