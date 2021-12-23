@@ -9,7 +9,7 @@ const Main = () => {
       <RootStack.Screen
         name="Home"
         component={HomeScreen}
-        options={{title: 'Home'}}
+        options={{headerShown: false}}
       />
       <RootStack.Screen
         name="Dummy"

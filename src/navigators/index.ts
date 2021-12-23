@@ -1,4 +1,3 @@
-import {ROUTE_NAMES_TYPE} from './../utils/constants/route.constants';
 import {
   createNativeStackNavigator,
   NativeStackNavigationProp,
