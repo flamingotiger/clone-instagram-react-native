@@ -4,36 +4,29 @@ import {
   ScrollView,
   StatusBar,
   StyleSheet,
-  Text,
   useColorScheme,
   View,
 } from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import {Colors} from 'react-native/Libraries/NewAppScreen';
 import Header from '../../components/home/Header';
+import Posts from '../../components/home/Posts';
 import {NavigatorProps} from '../../navigators';
 
 interface HomeScreenProps extends NavigatorProps {}
 const HomeScreen: React.FC<HomeScreenProps> = ({navigation}) => {
   const isDarkMode = useColorScheme() === 'light';
-  const scrollViewRef = React.useRef(null);
   return (
-    <View
+    <SafeAreaView
       style={[
         styles.home,
         {backgroundColor: isDarkMode ? Colors.black : Colors.light},
       ]}>
       <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-      <SafeAreaView style={styles.body}>
-        {/* header */}
-        <Header scrollViewRef={scrollViewRef} />
-        {/* section */}
-        <ScrollView ref={scrollViewRef}>
-          <Text>Home</Text>
-          <Button onPress={() => navigation.push('Dummy')} title="이동" />
-        </ScrollView>
-      </SafeAreaView>
-    </View>
+      <Header />
+      <Posts />
+      <Button onPress={() => navigation.push('Dummy')} title="이동" />
+    </SafeAreaView>
   );
 };
 

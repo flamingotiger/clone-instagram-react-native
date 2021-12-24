@@ -1,8 +1,8 @@
-import {useScrollToTop} from '@react-navigation/native';
-import React from 'react';
+import React, {forwardRef} from 'react';
 import {
   Dimensions,
   Image,
+  ScrollView,
   StyleSheet,
   TouchableOpacity,
   useColorScheme,
@@ -10,15 +10,11 @@ import {
 } from 'react-native';
 import {Colors} from 'react-native/Libraries/NewAppScreen';
 
-interface HeaderProps {
-  scrollViewRef: any;
-}
-const Header: React.FC<HeaderProps> = ({scrollViewRef}) => {
+interface HeaderProps {}
+
+const Header = forwardRef<ScrollView, HeaderProps>((props, scrollViewRef) => {
   const isDarkMode = useColorScheme() === 'light';
-  const onPress = () => {
-    console.log(scrollViewRef);
-    // useScrollToTop(scrollViewRef)
-  };
+  const onPress = () => {};
   return (
     <View
       style={[
@@ -56,7 +52,7 @@ const Header: React.FC<HeaderProps> = ({scrollViewRef}) => {
       </View>
     </View>
   );
-};
+});
 
 const styles = StyleSheet.create({
   header: {

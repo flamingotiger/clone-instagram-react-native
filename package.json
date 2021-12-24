@@ -12,11 +12,15 @@
   "dependencies": {
     "@react-navigation/native": "^6.0.6",
     "@react-navigation/native-stack": "^6.2.5",
+    "@types/axios": "^0.14.0",
+    "@types/react-query": "^1.2.9",
+    "axios": "^0.24.0",
     "react": "17.0.2",
     "react-native": "0.66.3",
     "react-native-safe-area-context": "^3.3.2",
     "react-native-screens": "^3.10.1",
-    "react-native-splash-screen": "^3.3.0"
+    "react-native-splash-screen": "^3.3.0",
+    "react-query": "^3.34.5"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",

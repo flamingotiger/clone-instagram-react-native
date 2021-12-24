@@ -12,6 +12,16 @@ import React, {useEffect} from 'react';
 import SplashScreen from 'react-native-splash-screen';
 import {NavigationContainer} from '@react-navigation/native';
 import MainNavigator from './src/navigators/main';
+import { QueryClient, QueryClientProvider } from 'react-query';
+
+const queryClient = new QueryClient({
+	// Window Focus Refetching
+	defaultOptions: {
+		queries: {
+			refetchOnWindowFocus: false
+		}
+	}
+});
 
 const App = () => {
   useEffect(() => {
@@ -19,9 +29,11 @@ const App = () => {
   }, []);
 
   return (
-    <NavigationContainer>
-      <MainNavigator />
-    </NavigationContainer>
+    <QueryClientProvider client={queryClient}>
+      <NavigationContainer>
+        <MainNavigator />
+      </NavigationContainer>
+    </QueryClientProvider>
   );
 };
 
