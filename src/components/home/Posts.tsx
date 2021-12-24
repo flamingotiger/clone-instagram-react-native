@@ -1,5 +1,5 @@
 import React from 'react';
-import {FlatList, Text} from 'react-native';
+import {FlatList, StyleSheet, Text} from 'react-native';
 import {useQuery} from 'react-query';
 import {getListPosts, PostType} from '../../services/post.servies';
 import Post from './Post';
@@ -10,6 +10,7 @@ const Posts = () => {
   if (isLoading) return <Text>Loading...</Text>;
   return (
     <FlatList
+      style={styles.posts}
       ListHeaderComponent={<Stories />}
       data={data}
       numColumns={2}
@@ -21,4 +22,7 @@ const Posts = () => {
   );
 };
 
+const styles = StyleSheet.create({
+  posts: {flex: 1},
+});
 export default Posts;

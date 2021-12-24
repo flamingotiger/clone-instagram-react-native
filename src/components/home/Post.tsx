@@ -1,3 +1,4 @@
+import {useNavigation} from '@react-navigation/native';
 import React from 'react';
 import {
   View,
@@ -6,9 +7,74 @@ import {
   Image,
   Dimensions,
   TouchableOpacity,
+  Alert,
+  TouchableNativeFeedback,
 } from 'react-native';
 import {Colors} from 'react-native/Libraries/NewAppScreen';
 import {PostType} from '../../services/post.servies';
+
+const PostHeader: React.FC<PostProps> = ({post}) => {
+  const navigation = useNavigation();
+  const onPressProfile = () => Alert.alert('Profile');
+  const onPressMore = () => Alert.alert('more');
+  return (
+    <View style={styles.header}>
+      <TouchableOpacity onPress={onPressProfile} style={styles.postUser}>
+        <Image
+          source={require('../../assets/avatar.jpg')}
+          style={styles.profileImage}
+        />
+        <Text style={styles.boldText}>flamingotiger {post.userId}</Text>
+      </TouchableOpacity>
+      <TouchableNativeFeedback onPress={onPressMore}>
+        <Image
+          source={require('../../assets/icon_more.png')}
+          style={styles.icon}
+        />
+      </TouchableNativeFeedback>
+    </View>
+  );
+};
+
+const PostFooter: React.FC<PostProps> = ({post}) => {
+  const onPressheart = () => Alert.alert('heart');
+  const onPresscomment = () => Alert.alert('comment');
+  const onPressairplane = () => Alert.alert('airplane');
+  const onPressbookmark = () => Alert.alert('bookmark');
+  return (
+    <View>
+      <View style={styles.iconContainer}>
+        <TouchableOpacity onPress={onPressheart}>
+          <Image
+            source={require('../../assets/icon_heart.png')}
+            style={styles.icon}
+          />
+        </TouchableOpacity>
+        <TouchableOpacity onPress={onPresscomment}>
+          <Image
+            source={require('../../assets/icon_comment.png')}
+            style={styles.icon}
+          />
+        </TouchableOpacity>
+        <TouchableOpacity onPress={onPressairplane}>
+          <Image
+            source={require('../../assets/icon_airplane.png')}
+            style={styles.icon}
+          />
+        </TouchableOpacity>
+      </View>
+      <View></View>
+      <View>
+        <TouchableOpacity onPress={onPressbookmark}>
+          <Image
+            source={require('../../assets/icon_bookmark.png')}
+            style={styles.icon}
+          />
+        </TouchableOpacity>
+      </View>
+    </View>
+  );
+};
 
 interface PostProps {
   post: PostType;
@@ -17,23 +83,7 @@ const Post: React.FC<PostProps> = ({post}) => {
   const onPress = () => {};
   return (
     <View>
-      <View>
-        <View style={styles.header}>
-          <TouchableOpacity onPress={onPress} style={styles.postUser}>
-            <Image
-              source={require('../../assets/dummy_image-1.png')}
-              style={styles.profileImage}
-            />
-            <Text style={styles.boldText}>flamingotiger {post.userId}</Text>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={onPress}>
-            <Image
-              source={require('../../assets/icon_more.png')}
-              style={styles.icon}
-            />
-          </TouchableOpacity>
-        </View>
-      </View>
+      <PostHeader post={post} />
       <View>
         <Image
           source={require('../../assets/dummy_image-0.jpg')}
@@ -41,37 +91,7 @@ const Post: React.FC<PostProps> = ({post}) => {
         />
       </View>
       <View>
-        <View>
-          <View style={styles.iconContainer}>
-            <TouchableOpacity onPress={onPress}>
-              <Image
-                source={require('../../assets/icon_heart.png')}
-                style={styles.icon}
-              />
-            </TouchableOpacity>
-            <TouchableOpacity onPress={onPress}>
-              <Image
-                source={require('../../assets/icon_comment.png')}
-                style={styles.icon}
-              />
-            </TouchableOpacity>
-            <TouchableOpacity onPress={onPress}>
-              <Image
-                source={require('../../assets/icon_airplane.png')}
-                style={styles.icon}
-              />
-            </TouchableOpacity>
-          </View>
-          <View></View>
-          <View>
-            <TouchableOpacity onPress={onPress}>
-              <Image
-                source={require('../../assets/icon_bookmark.png')}
-                style={styles.icon}
-              />
-            </TouchableOpacity>
-          </View>
-        </View>
+        <PostFooter post={post} />
         <View>
           <Text style={styles.boldText}>
             flamingotiger {post.userId} 님 외 200명이 좋아합니다.
@@ -101,7 +121,7 @@ const styles = StyleSheet.create({
   profileImage: {
     width: 36,
     height: 36,
-    resizeMode: 'contain',
+    resizeMode: 'cover',
     borderRadius: 364,
     marginRight: 10,
   },
