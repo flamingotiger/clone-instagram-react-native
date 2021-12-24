@@ -5,12 +5,12 @@ import {
   StatusBar,
   StyleSheet,
   useColorScheme,
-  View,
 } from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import {Colors} from 'react-native/Libraries/NewAppScreen';
 import Header from '../../components/home/Header';
 import Posts from '../../components/home/Posts';
+import Stories from '../../components/home/Stories';
 import {NavigatorProps} from '../../navigators';
 
 interface HomeScreenProps extends NavigatorProps {}

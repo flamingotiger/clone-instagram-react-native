@@ -19,7 +19,7 @@ const Post: React.FC<PostProps> = ({post}) => {
     <View>
       <View>
         <View style={styles.header}>
-          <TouchableOpacity onPress={onPress}>
+          <TouchableOpacity onPress={onPress} style={styles.postUser}>
             <Image
               source={require('../../assets/dummy_image-1.png')}
               style={styles.profileImage}
@@ -99,10 +99,11 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   profileImage: {
-    width: 32,
-    height: 32,
+    width: 36,
+    height: 36,
     resizeMode: 'contain',
-    borderRadius: 32,
+    borderRadius: 364,
+    marginRight: 10,
   },
   image: {
     width: Dimensions.get('window').width,
@@ -114,7 +115,12 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
     marginHorizontal: 10,
-    height: 60,
+    height: 64,
+  },
+  postUser: {
+    flexDirection: 'row',
+    justifyContent: 'flex-start',
+    alignItems: 'center',
   },
   iconContainer: {
     flexDirection: 'row',

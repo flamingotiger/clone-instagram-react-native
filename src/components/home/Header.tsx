@@ -70,10 +70,9 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    marginHorizontal: 20,
     height: 52,
   },
-  logo: {width: 100, height: 50, resizeMode: 'contain'},
+  logo: {width: 120, height: 50, resizeMode: 'contain'},
   icon: {width: 24, height: 24, marginLeft: 20, resizeMode: 'contain'},
 });
 export default Header;
