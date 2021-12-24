@@ -12,6 +12,7 @@ import {
 } from 'react-native';
 import {Colors} from 'react-native/Libraries/NewAppScreen';
 import {PostType} from '../../services/post.servies';
+import Swiper from 'react-native-swiper';
 
 const PostHeader: React.FC<PostProps> = ({post}) => {
   const navigation = useNavigation();
@@ -141,6 +142,33 @@ const Comments = () => {
   );
 };
 
+const SwiperImages = () => {
+  return (
+    <View style={styles.swiperContainer}>
+      <Swiper
+        style={styles.swiper}
+        loop={false}
+        paginationStyle={{
+          position: 'absolute',
+          bottom: -30,
+        }}
+        dotColor={Colors.dark}>
+        <View style={styles.slide}>
+          <Image
+            source={require('../../assets/dummy_image-0.jpg')}
+            style={styles.image}
+          />
+        </View>
+        <View style={styles.slide}>
+          <Image
+            source={require('../../assets/dummy_image-4.jpg')}
+            style={styles.image}
+          />
+        </View>
+      </Swiper>
+    </View>
+  );
+};
 interface PostProps {
   post: PostType;
 }
@@ -148,12 +176,7 @@ const Post: React.FC<PostProps> = ({post}) => {
   return (
     <View>
       <PostHeader post={post} />
-      <View>
-        <Image
-          source={require('../../assets/dummy_image-0.jpg')}
-          style={styles.image}
-        />
-      </View>
+      <SwiperImages />
       <View style={styles.body}>
         <PostFooter post={post} />
         <Like post={post} />
@@ -178,6 +201,20 @@ const styles = StyleSheet.create({
     resizeMode: 'cover',
     borderRadius: 364,
     marginRight: 10,
+  },
+  // swiper
+  swiperContainer: {
+    position: 'relative',
+  },
+  swiper: {
+    height: Dimensions.get('window').width,
+  },
+  slide: {
+    width: Dimensions.get('window').width,
+    height: Dimensions.get('window').width,
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   image: {
     width: Dimensions.get('window').width,
