@@ -1,5 +1,5 @@
 import {useNavigation} from '@react-navigation/native';
-import React from 'react';
+import React, {useCallback, useState} from 'react';
 import {
   View,
   Text,
@@ -19,10 +19,10 @@ const PostHeader: React.FC<PostProps> = ({post}) => {
   const onPressMore = () => Alert.alert('more');
   return (
     <View style={styles.header}>
-      <TouchableOpacity onPress={onPressProfile} style={styles.postUser}>
+      <TouchableOpacity onPress={onPressProfile} style={styles.headerAvatar}>
         <Image
           source={require('../../assets/avatar.jpg')}
-          style={styles.profileImage}
+          style={styles.headerAvaterImage}
         />
         <Text style={styles.boldText}>flamingotiger {post.userId}</Text>
       </TouchableOpacity>
@@ -42,7 +42,7 @@ const PostFooter: React.FC<PostProps> = ({post}) => {
   const onPressairplane = () => Alert.alert('airplane');
   const onPressbookmark = () => Alert.alert('bookmark');
   return (
-    <View>
+    <View style={styles.postFooter}>
       <View style={styles.iconContainer}>
         <TouchableOpacity onPress={onPressheart}>
           <Image
@@ -76,11 +76,75 @@ const PostFooter: React.FC<PostProps> = ({post}) => {
   );
 };
 
+const Like: React.FC<PostProps> = ({post}) => {
+  const onPressLike = () => Alert.alert('like');
+  return (
+    <TouchableOpacity onPress={onPressLike}>
+      <View style={styles.likeContainer}>
+        <Image
+          source={require('../../assets/avatar.jpg')}
+          style={styles.likeAvatar}
+        />
+        <Text style={styles.boldText}>
+          flamingotiger {post.userId} 님 외 200명이 좋아합니다.
+        </Text>
+      </View>
+    </TouchableOpacity>
+  );
+};
+
+const Contents: React.FC<PostProps> = ({post}) => {
+  const [isShowMore, setIsShowMore] = useState(false);
+  const onPress = () => setIsShowMore(prevState => !prevState);
+  const [contents, setContents] = useState(post.body);
+
+  const onTextLayout = useCallback(
+    e => {
+      // 처음 실행시
+      if (!isShowMore) {
+        if (e.nativeEvent.lines.length > 2) {
+          // 두줄 넘는다면 첫줄 두줄만 나온다.
+          const [firstLine, secondLine] = e.nativeEvent.lines;
+          const line = `${firstLine.text}${secondLine.text}`.slice(0, -10);
+          setContents(line);
+          return;
+        }
+      }
+      // 더보기
+      if (isShowMore) {
+        setContents(post.body);
+      }
+    },
+    [isShowMore],
+  );
+
+  return (
+    <View style={styles.contents}>
+      <Text
+        style={[styles.text, styles.contentsText]}
+        onPress={onPress}
+        onTextLayout={onTextLayout}>
+        <Text style={styles.boldText}>flamingotiger {post.userId}</Text>
+        <Text>{contents}</Text>
+        {!isShowMore && <Text style={styles.textGrey}> 더 보기</Text>}
+      </Text>
+    </View>
+  );
+};
+
+const Comments = () => {
+  const onPress = () => Alert.alert('comment');
+  return (
+    <TouchableOpacity onPress={onPress} style={styles.comments}>
+      <Text style={[styles.text, styles.textGrey]}>댓글 81개 모두 보기</Text>
+    </TouchableOpacity>
+  );
+};
+
 interface PostProps {
   post: PostType;
 }
 const Post: React.FC<PostProps> = ({post}) => {
-  const onPress = () => {};
   return (
     <View>
       <PostHeader post={post} />
@@ -90,21 +154,11 @@ const Post: React.FC<PostProps> = ({post}) => {
           style={styles.image}
         />
       </View>
-      <View>
+      <View style={styles.body}>
         <PostFooter post={post} />
-        <View>
-          <Text style={styles.boldText}>
-            flamingotiger {post.userId} 님 외 200명이 좋아합니다.
-          </Text>
-          <Text style={styles.text}>님 외</Text>
-          <Text style={styles.boldText}>200</Text>
-          <Text style={styles.text}>명이 좋아합니다.</Text>
-        </View>
-        <View>
-          <Text style={styles.boldText}>
-            flamingotiger {post.userId} {post.body}
-          </Text>
-        </View>
+        <Like post={post} />
+        <Contents post={post} />
+        <Comments />
       </View>
     </View>
   );
@@ -118,7 +172,7 @@ const styles = StyleSheet.create({
     color: Colors.white,
     fontWeight: 'bold',
   },
-  profileImage: {
+  headerAvaterImage: {
     width: 36,
     height: 36,
     resizeMode: 'cover',
@@ -130,6 +184,26 @@ const styles = StyleSheet.create({
     height: Dimensions.get('window').width,
     resizeMode: 'contain',
   },
+  body: {
+    marginHorizontal: 10,
+  },
+  // comments
+  comments: {
+    marginTop: 8,
+  },
+  // link
+  likeContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: 8,
+  },
+  likeAvatar: {
+    width: 20,
+    height: 20,
+    borderRadius: 20,
+    marginRight: 6,
+  },
+  // postHeader
   header: {
     flexDirection: 'row',
     justifyContent: 'space-between',
@@ -137,17 +211,28 @@ const styles = StyleSheet.create({
     marginHorizontal: 10,
     height: 64,
   },
-  postUser: {
+  headerAvatar: {
     flexDirection: 'row',
     justifyContent: 'flex-start',
     alignItems: 'center',
+  },
+  // Contents
+  contents: {},
+  contentsText: {width: Dimensions.get('window').width - 20},
+  textGrey: {color: Colors.light},
+  // postFooter
+  postFooter: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginVertical: 5,
   },
   iconContainer: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    marginHorizontal: 10,
     height: 40,
+    width: 90,
   },
   icon: {width: 20, height: 20, resizeMode: 'contain'},
 });
