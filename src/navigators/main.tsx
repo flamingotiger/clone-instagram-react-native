@@ -1,6 +1,7 @@
 import React from 'react';
 import HomeScreen from '../screens/Home';
-import DummyScreen from '../screens/Search';
+import SearchScreen from '../screens/Search';
+import ReelsScreen from '../screens/Reels';
 import {RootStack} from '.';
 import {Colors} from 'react-native/Libraries/NewAppScreen';
 import TabBarIcon from '../components/tabBar/TabBarIcon';
@@ -25,22 +26,22 @@ const Main = () => {
       <RootStack.Screen name="Home" component={HomeScreen} />
       <RootStack.Screen
         name="Search"
-        component={DummyScreen}
+        component={SearchScreen}
         options={{title: 'Search'}}
       />
       <RootStack.Screen
         name="Reels"
-        component={DummyScreen}
+        component={ReelsScreen}
         options={{title: 'Reels'}}
       />
       <RootStack.Screen
         name="Shop"
-        component={DummyScreen}
+        component={SearchScreen}
         options={{title: 'Shop'}}
       />
       <RootStack.Screen
         name="MyPage"
-        component={DummyScreen}
+        component={SearchScreen}
         options={{
           title: 'MyPage',
           tabBarIcon: ({focused}) => (
