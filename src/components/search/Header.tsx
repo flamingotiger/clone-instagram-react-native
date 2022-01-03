@@ -1,9 +1,11 @@
 import React from 'react';
 import {
+  Alert,
   Dimensions,
   Image,
   StyleSheet,
   TextInput,
+  TouchableOpacity,
   View,
 } from 'react-native';
 import {Colors} from 'react-native/Libraries/NewAppScreen';
@@ -15,21 +17,33 @@ const SearchBar = () => {
         style={styles.searchIcon}
         source={require('../../assets/icon_search.png')}
       />
-      <TextInput style={styles.input} 
-      placeholderTextColor='rgba(255,255,255,0.6)'
-      placeholder="검색" />
+      <TextInput
+        style={styles.input}
+        placeholderTextColor="rgba(255,255,255,0.6)"
+        placeholder="검색"
+      />
     </View>
   );
 };
 
-const Header = () => {
+const MapIcon = () => {
+  const onPress = () => {
+    Alert.alert('map');
+  };
   return (
-    <View style={styles.searchHeader}>
-      <SearchBar />
+    <TouchableOpacity onPress={onPress}>
       <Image
         style={styles.mapIcon}
         source={require('../../assets/icon_map.png')}
       />
+    </TouchableOpacity>
+  );
+};
+const Header = () => {
+  return (
+    <View style={styles.searchHeader}>
+      <SearchBar />
+      <MapIcon />
     </View>
   );
 };
@@ -39,7 +53,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-around',
-    marginBottom: 4
+    marginBottom: 8,
   },
   searchBar: {
     backgroundColor: 'rgb(42,42,42)',
