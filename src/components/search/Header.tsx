@@ -9,22 +9,7 @@ import {
   View,
 } from 'react-native';
 import {Colors} from 'react-native/Libraries/NewAppScreen';
-
-const SearchBar = () => {
-  return (
-    <View style={styles.searchBar}>
-      <Image
-        style={styles.searchIcon}
-        source={require('../../assets/icon_search.png')}
-      />
-      <TextInput
-        style={styles.input}
-        placeholderTextColor="rgba(255,255,255,0.6)"
-        placeholder="검색"
-      />
-    </View>
-  );
-};
+import SearchBar from '../common/searchBar';
 
 const MapIcon = () => {
   const onPress = () => {
@@ -42,7 +27,7 @@ const MapIcon = () => {
 const Header = () => {
   return (
     <View style={styles.searchHeader}>
-      <SearchBar />
+      <SearchBar style={styles.searchBar}/>
       <MapIcon />
     </View>
   );
@@ -56,24 +41,7 @@ const styles = StyleSheet.create({
     marginBottom: 8,
   },
   searchBar: {
-    backgroundColor: 'rgb(42,42,42)',
-    height: 42,
-    width: Dimensions.get('window').width * 0.9,
-    flexDirection: 'row',
-    alignItems: 'center',
-    paddingLeft: 12,
-    borderRadius: 10,
-  },
-  searchIcon: {
-    width: 16,
-    height: 16,
-    opacity: 0.6,
-  },
-  input: {
-    fontSize: 18,
-    fontWeight: 'bold',
-    paddingLeft: 10,
-    color: Colors.white,
+    marginHorizontal: 10
   },
   mapIcon: {
     width: 20,

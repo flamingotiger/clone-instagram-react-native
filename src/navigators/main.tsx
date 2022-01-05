@@ -2,6 +2,7 @@ import React from 'react';
 import HomeScreen from '../screens/Home';
 import SearchScreen from '../screens/Search';
 import ReelsScreen from '../screens/Reels';
+import ShopScreen from '../screens/Shop';
 import {RootStack} from '.';
 import {Colors} from 'react-native/Libraries/NewAppScreen';
 import TabBarIcon from '../components/tabBar/TabBarIcon';
@@ -36,7 +37,7 @@ const Main = () => {
       />
       <RootStack.Screen
         name="Shop"
-        component={SearchScreen}
+        component={ShopScreen}
         options={{title: 'Shop'}}
       />
       <RootStack.Screen
