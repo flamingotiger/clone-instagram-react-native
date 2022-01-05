@@ -5,7 +5,7 @@ import ReelsScreen from '../screens/Reels';
 import ShopScreen from '../screens/Shop';
 import {RootStack} from '.';
 import {Colors} from 'react-native/Libraries/NewAppScreen';
-import TabBarIcon from '../components/tabBar/TabBarIcon';
+import TabBarIcon from '../components/common/TabBarIcon';
 import {Image, StyleSheet} from 'react-native';
 
 const Main = () => {
