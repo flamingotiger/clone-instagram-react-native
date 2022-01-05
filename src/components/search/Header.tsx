@@ -9,7 +9,7 @@ import {
   View,
 } from 'react-native';
 import {Colors} from 'react-native/Libraries/NewAppScreen';
-import SearchBar from '../common/searchBar';
+import SearchBar from '../common/SearchBar';
 
 const MapIcon = () => {
   const onPress = () => {
