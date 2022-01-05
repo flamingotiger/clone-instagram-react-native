@@ -8,7 +8,7 @@ export type RootStackParamList = {
   Search: undefined;
   Reels: undefined;
   Shop: undefined;
-  MyPage: undefined;
+  MyProfile: undefined;
 };
 
 export const RootStack = createBottomTabNavigator<RootStackParamList>();

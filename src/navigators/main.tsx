@@ -41,14 +41,14 @@ const Main = () => {
         options={{title: 'Shop'}}
       />
       <RootStack.Screen
-        name="MyPage"
+        name="MyProfile"
         component={SearchScreen}
         options={{
-          title: 'MyPage',
+          title: 'MyProfile',
           tabBarIcon: ({focused}) => (
             <Image
               style={[
-                styles.myPageIcon,
+                styles.myProfileIcon,
                 {borderWidth: focused ? 2 : 0, borderColor: Colors.white},
               ]}
               source={require('../assets/dummy_image-2.jpg')}
@@ -61,6 +61,6 @@ const Main = () => {
 };
 
 const styles = StyleSheet.create({
-  myPageIcon: {width: 30, height: 30, borderRadius: 20},
+  myProfileIcon: {width: 30, height: 30, borderRadius: 20},
 });
 export default Main;

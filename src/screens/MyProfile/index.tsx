@@ -1,12 +1,12 @@
 import React from 'react';
 import {Text, View} from 'react-native';
 
-const MyPage = () => {
+const MyProfile = () => {
   return (
     <View>
-      <Text>MyPage</Text>
+      <Text>MyProfile</Text>
     </View>
   );
 };
 
-export default MyPage;
+export default MyProfile;
