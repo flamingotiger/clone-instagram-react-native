@@ -17,26 +17,30 @@ export const reelsPostHeight = Dimensions.get('window').height - 82;
 const Infomation = () => {
   return (
     <View style={styles.infomation}>
-      <View>
-        <View style={styles.profile}>
-          <Image
-            style={styles.avatar}
-            source={require('../../assets/dummy_image-0.jpg')}
-          />
-          <Text
-            style={
-              styles.name
-            }>{`${faker.name.firstName()} ${faker.name.lastName()}`}</Text>
-          <TouchableOpacity onPress={() => Alert.alert('follow')}>
-            <Text style={styles.followButton}>팔로우</Text>
-          </TouchableOpacity>
-        </View>
-        <Text style={styles.profileContents} numberOfLines={1}>
+      <View style={styles.profile}>
+        <Image
+          style={styles.avatar}
+          source={require('../../assets/dummy_image-0.jpg')}
+        />
+        <Text
+          style={
+            styles.name
+          }>{`${faker.name.firstName()} ${faker.name.lastName()}`}</Text>
+        <TouchableOpacity onPress={() => Alert.alert('follow')}>
+          <Text style={styles.followButton}>팔로우</Text>
+        </TouchableOpacity>
+      </View>
+      <Text style={styles.profileContents} numberOfLines={1}>
+        {faker.lorem.text()}
+      </Text>
+      <View style={styles.music}>
+        <Image
+          style={styles.musicIcon}
+          source={require('../../assets/icon_music.png')}
+        />
+        <Text numberOfLines={1} style={styles.musicName}>
           {faker.lorem.text()}
         </Text>
-      </View>
-      <View>
-        <Text>test</Text>
       </View>
     </View>
   );
@@ -75,7 +79,15 @@ const Tools = () => {
         onPress={() => Alert.alert('more')}>
         <Image
           source={require('../../assets/icon_more.png')}
-          style={styles.toolIconImage}
+          style={styles.moreIcon}
+        />
+      </TouchableOpacity>
+      <TouchableOpacity
+        style={styles.toolProfile}
+        onPress={() => Alert.alert('toolProfile')}>
+        <Image
+          source={require('../../assets/dummy_image-0.jpg')}
+          style={styles.toolProfileImage}
         />
       </TouchableOpacity>
     </View>
@@ -155,7 +167,24 @@ const styles = StyleSheet.create({
     color: Colors.white,
     marginRight: 10,
   },
-  profileContents: {fontWeight: 'bold', fontSize: 14, color: Colors.white},
+  profileContents: {
+    fontWeight: 'bold',
+    fontSize: 14,
+    color: Colors.white,
+    marginBottom: 10,
+  },
+  music: {flexDirection: 'row', alignItems: 'center'},
+  musicIcon: {
+    width: 12,
+    height: 12,
+    marginRight: 10,
+  },
+  musicName: {
+    fontSize: 14,
+    color: Colors.white,
+    fontWeight: 'bold',
+    flex: 1,
+  },
   followButton: {
     color: Colors.white,
     borderWidth: 1,
@@ -164,22 +193,45 @@ const styles = StyleSheet.create({
     paddingHorizontal: 6,
     borderRadius: 4,
   },
-  profile: {flexDirection: 'row', alignItems: 'center'},
-  tools: {width: Dimensions.get('window').width * 0.1},
+  profile: {flexDirection: 'row', alignItems: 'center', marginBottom: 10},
+  tools: {
+    width: Dimensions.get('window').width * 0.1,
+    alignItems: 'center',
+    paddingBottom: 20,
+  },
+  moreIcon: {
+    width: 16,
+    height: 16,
+    resizeMode: 'contain',
+    marginBottom: 10,
+  },
   toolIcon: {
-    marginBottom: 14,
+    marginBottom: 18,
     alignContent: 'center',
     justifyContent: 'center',
   },
   toolIconImage: {
-    width: 30,
-    height: 30,
+    width: 26,
+    height: 26,
     resizeMode: 'contain',
   },
   toolCount: {
     fontSize: 14,
     color: Colors.white,
     marginTop: 4,
+  },
+  toolProfile: {
+    width: 24,
+    height: 24,
+    borderWidth: 2,
+    borderColor: Colors.white,
+    borderRadius: 6,
+  },
+  toolProfileImage: {
+    width: 24,
+    height: 24,
+    resizeMode: 'contain',
+    borderRadius: 6,
   },
 });
 

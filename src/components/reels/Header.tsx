@@ -6,7 +6,10 @@ const Header: React.FC = () => {
   return (
     <View style={styles.header}>
       <Text style={styles.title}>릴스</Text>
-      <Image source={require('../../assets/icon_camera.png')} />
+      <Image
+        style={styles.icon}
+        source={require('../../assets/icon_camera.png')}
+      />
     </View>
   );
 };
@@ -21,9 +24,14 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
     paddingVertical: 20,
     top: 40,
-    zIndex: 10
+    zIndex: 10,
   },
   title: {fontSize: 24, fontWeight: 'bold', color: Colors.white},
+  icon: {
+    width: 24,
+    height: 24,
+    resizeMode: 'contain',
+  },
 });
 
 export default Header;
