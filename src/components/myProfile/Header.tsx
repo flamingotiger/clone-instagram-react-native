@@ -14,7 +14,7 @@ import SearchBar from '../common/SearchBar';
 const Header = () => {
   return (
     <View style={styles.header}>
-      <Text style={styles.title}>Shop</Text>
+      <Text style={styles.title}>dev_flamingotiger</Text>
       {false && <SearchBar />}
       <View style={styles.iconGroup}>
         <TouchableOpacity
@@ -48,7 +48,7 @@ const styles = StyleSheet.create({
     width: Dimensions.get('window').width,
     backgroundColor: Colors.black,
     zIndex: 1,
-    height: 48
+    height: 48,
   },
   title: {fontSize: 24, fontWeight: 'bold', color: Colors.white},
   iconGroup: {

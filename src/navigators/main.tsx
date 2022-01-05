@@ -3,6 +3,7 @@ import HomeScreen from '../screens/Home';
 import SearchScreen from '../screens/Search';
 import ReelsScreen from '../screens/Reels';
 import ShopScreen from '../screens/Shop';
+import MyProfileScreen from '../screens/MyProfile';
 import {RootStack} from '.';
 import {Colors} from 'react-native/Libraries/NewAppScreen';
 import TabBarIcon from '../components/common/TabBarIcon';
@@ -42,7 +43,7 @@ const Main = () => {
       />
       <RootStack.Screen
         name="MyProfile"
-        component={SearchScreen}
+        component={MyProfileScreen}
         options={{
           title: 'MyProfile',
           tabBarIcon: ({focused}) => (
