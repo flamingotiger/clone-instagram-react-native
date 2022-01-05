@@ -1,6 +1,7 @@
 import React from 'react';
 import {
   Alert,
+  Dimensions,
   Image,
   StyleSheet,
   Text,
@@ -39,11 +40,15 @@ const Header = () => {
 
 const styles = StyleSheet.create({
   header: {
+    position: 'absolute',
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
     paddingHorizontal: 10,
-    paddingVertical: 10,
+    width: Dimensions.get('window').width,
+    backgroundColor: Colors.black,
+    zIndex: 1,
+    height: 48
   },
   title: {fontSize: 28, fontWeight: 'bold', color: Colors.white},
   iconGroup: {
