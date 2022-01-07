@@ -50,6 +50,7 @@ const RecommendPerson = () => {
       </View>
       <ScrollView horizontal>
         <RecommendPersonItem />
+        <RecommendPersonItem />
       </ScrollView>
     </View>
   );
@@ -86,7 +87,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
     marginTop: 24,
-    marginBottom: 14
+    marginBottom: 14,
   },
   title: {fontSize: 16, fontWeight: 'bold', color: Colors.white},
   more: {fontSize: 16, fontWeight: 'bold', color: 'rgb(0,140,250)'},
@@ -97,6 +98,7 @@ const styles = StyleSheet.create({
     padding: 10,
     alignItems: 'center',
     justifyContent: 'center',
+    marginRight: 4,
   },
   recommendPersonImage: {width: 80, height: 80, borderRadius: 80},
   name: {
