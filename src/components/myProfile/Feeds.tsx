@@ -4,9 +4,7 @@ import {
   Image,
   ScrollView,
   StyleSheet,
-  Text,
   TouchableOpacity,
-  View,
 } from 'react-native';
 import {Colors} from 'react-native/Libraries/NewAppScreen';
 
@@ -24,7 +22,7 @@ const Feed = () => {
 const Feeds = () => {
   return (
     <ScrollView
-      contentContainerStyle={{flex: 1, flexDirection: 'row', flexWrap: 'wrap'}}>
+      contentContainerStyle={{flex: 1, flexDirection: 'row', flexWrap: 'wrap', marginTop: 20}}>
       {new Array(30).fill(null).map((_, index) => (
         <Feed key={index} />
       ))}
